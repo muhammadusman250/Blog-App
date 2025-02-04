@@ -43,8 +43,8 @@ function SingleBlog() {
                 <Link
                   href={`/blog/${item.title.toLowerCase().replace(/ /g, "-")}`}
                 >
-                  <button className="hover:text-blue-700 py-1 inline-flex text-lg font-[500] items-center gap-x-2 text-blue-800">
-                    Read more...
+                  <button className="hover:text-blue-700 hover:scale-105 hover:duration-300 py-1 inline-flex text-lg font-medium items-center gap-x-2 border-2 px-2 border-black rounded-xl text-blue-800">
+                    Read more
                   </button>
                 </Link>
               </div>
@@ -55,9 +55,9 @@ function SingleBlog() {
 
       <div className="my-10">
         <Link href={"/blog"}>
-        <button className="px-8 py-3 lg:px-10 lg:py-3 sm:px-4 sm:py-2 text-[19px] sm:text-[16px] lg:text-[19px] bg-slate-400 text-white rounded-full shadow-md hover:bg-slate-500 hover:shadow-lg transition-all ease-linear inline-flex items-center gap-x-3 hover:translate-y-0 hover:scale-105 ">
-  All Blogs
-</button>
+          <button className="px-8 py-3 lg:px-10 lg:py-3 sm:px-4 sm:py-2 text-[19px] sm:text-[16px] lg:text-[19px] bg-slate-400 text-white rounded-2xl shadow-md hover:bg-slate-500 hover:shadow-lg transition-all ease-linear inline-flex items-center gap-x-3 hover:translate-y-0 hover:scale-105 ">
+            More Blogs
+          </button>
         </Link>
       </div>
     </div>

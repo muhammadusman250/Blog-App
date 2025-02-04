@@ -1,104 +1,95 @@
-'use client';
+"use client";
+import { useState, FormEvent } from "react";
 
-import React, { useState } from 'react';
+export default function ContactForm() {
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
 
-interface ContactFormValues {
-  name: string;
-  email: string;
-  message: string;
-}
-
-function Contact() {
-  const [formData, setFormData] = useState<ContactFormValues>({
-    name: '',
-    email: '',
-    message: '',
-  });
-
-  const [successMessage, setSuccessMessage] = useState('');
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setSuccessMessage('Thank you for reaching out! We will get back to you soon.');
-    setFormData({ name: '', email: '', message: '' });
-  };
+    setLoading(true);
+
+    const target = e.target as typeof e.target & {
+      name: { value: string };
+      email: { value: string };
+      message: { value: string };
+    };
+
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        access_key: "57b508e4-8fc2-4c0c-b22e-7e05a1affbc2",
+        name: target.name.value,
+        email: target.email.value,
+        message: target.message.value,
+      }),
+    });
+
+    const result = await response.json();
+    setLoading(false);
+
+    if (result.success) {
+      setMessage("Message sent successfully!!!");
+      console.log(result);
+    } else {
+      setMessage("There was an error submitting the form.");
+    }
+  }
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4 sm:px-6 lg:px-8 mt-20">
-      <div className="w-full max-w-lg mx-auto p-6  sm:p-8 lg:p-8 bg-sky-200 shadow-xl rounded-lg">
+    <>
+      <section
+        className="relative bg-[url('/Image/bg-05.png')] w-full bg-cover md:pt-[5%] max-md:pt-[10%]"
+      >
+        <div className="absolute bg-black-1 opacity-70 inset-0"></div>
 
-        <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-6 text-center">
-          Contact Us
-        </h2>
-
-        <form onSubmit={handleSubmit}>
-          <div className="mb-4">
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700">
-              Name
-            </label>
+        <form onSubmit={handleSubmit} className="relative text-center py-16">
+          <div className="text-center text-color-01 pb-16 text-5xl font-bold max-sm:text-4xl">
+            Contact Me
+          </div>
+          <div className="mb-10">
             <input
               type="text"
-              id="name"
               name="name"
-              value={formData.name}
-              onChange={handleChange}
-              className="mt-1 p-3 w-full border rounded-md focus:ring focus:ring-blue-300 focus:outline-none"
               required
+              placeholder="Your name"
+              className="border-2 rounded-lg border-black p-3 text-xl text-black w-2/4 max-lg:w-3/4 max-md:text-lg"
             />
           </div>
-
-          <div className="mb-4">
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-              Email
-            </label>
+          <div className="mb-10">
             <input
               type="email"
-              id="email"
               name="email"
-              value={formData.email}
-              onChange={handleChange}
-              className="mt-1 p-3 w-full border rounded-md focus:ring focus:ring-blue-300 focus:outline-none"
               required
+              placeholder="Enter Your Email"
+              className="border-2 rounded-lg border-black p-3 text-xl text-black w-2/4 max-lg:w-3/4 max-md:text-lg"
             />
           </div>
-
-          <div className="mb-4">
-            <label htmlFor="message" className="block text-sm font-medium text-gray-700">
-              Message
-            </label>
+          <div className="mb-10">
             <textarea
-              id="message"
               name="message"
-              value={formData.message}
-              onChange={handleChange}
-              rows={4}
-              className="mt-1 p-3 w-full border rounded-md focus:ring focus:ring-blue-300 focus:outline-none"
               required
-            />
+              rows={3}
+              placeholder="Enter Message"
+              className="border-2 rounded-lg border-black p-3 text-xl text-black w-2/4 max-lg:w-3/4 max-md:text-lg"
+            ></textarea>
           </div>
-
+          <div className="relative text-center text-color-01 text-xl pb-5">
+            {message && <p>{message}</p>}
+          </div>
           <button
             type="submit"
-            className="w-full bg-cyan-600 text-white py-3 rounded-md hover:bg-cyan-500 focus:outline-none focus:ring focus:ring-blue-300 transition duration-200"
+            disabled={loading}
+            className="text-black text-lg border-2 rounded-3xl px-12 py-3 cursor-pointer hover:text-black hover:font-bold hover:bg-02"
           >
-            Submit
+            {loading ? "Submitting..." : "Submit"}
           </button>
         </form>
-
-        {successMessage && (
-          <div className="mt-6 text-green-600 font-medium text-center">{successMessage}</div>
-        )}
-      </div>
-    </div>
+      </section>
+    </>
   );
 }
-
-export default Contact;

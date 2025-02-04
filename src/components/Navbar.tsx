@@ -12,14 +12,14 @@ function Navbar() {
   }
 
   return (
-    <div className="bg-gradient-to-r from-teal-400 via-purple-500 to-pink-500 z-50 text-white fixed top-0 left-0 right-0 shadow-lg">
+    <div className="bg-gradient-to-r  from-green-300 via-orange-300 to-red-300 z-50 text-white fixed top-0 left-0 right-0 shadow-lg">
       <nav className="py-5 max-w-7xl mx-auto flex justify-between items-center">
-        <Link className="text-black text-3xl font-bold letter-spacing-2" href="/">
-          InspireBlog
+        <Link className="text-black text-3xl font-bold letter-spacing-2 max-md:px-4" href="/">
+          My-Blogs 
         </Link>
 
         {/* Desktop Nav */}
-        <ul className="md:flex gap-8 text-lg hidden ">
+        <ul className="md:flex gap-8 text-lg hidden">
           <li className="text-slate-900 hover:text-slate-300 transition duration-300">
             <Link href="/">Home</Link>
           </li>
@@ -51,7 +51,7 @@ function Navbar() {
         </div>
 
         {/* Mobile Menu Button */}
-        <div className="md:hidden">
+        <div className="md:hidden max-md:px-2">
           <button onClick={toggle} className="cursor-pointer">
             {isMenuOpen ? (
               <FaXmark className="w-6 h-6" />
@@ -63,9 +63,9 @@ function Navbar() {
       </nav>
 
       {/* Mobile Menu */}
-      <div>
+      <div className="">
         <ul
-          className={`md:hidden text-lg block space-y-4 px-6 py-6 mt-16 bg-black text-white shadow-xl rounded-lg ${isMenuOpen ? "fixed top-0 left-0 w-full transition-all duration-200 ease-out z-60" : "hidden"}`}
+          className={`md:hidden text-lg block space-y-4 px-6 py-6 mt-16 bg-yellow-900 text-white shadow-xl rounded-lg ${isMenuOpen ? "fixed top-0 left-0 w-full transition-all duration-200 ease-out z-60" : "hidden"}`}
         >
           <li className="hover:text-slate-300 transition duration-300">
             <Link onClick={toggle} href="/">Home</Link>

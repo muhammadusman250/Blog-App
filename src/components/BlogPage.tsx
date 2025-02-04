@@ -1,7 +1,6 @@
 import { Blog } from "@/app/data/data";
 import Image from "next/image";
 import Link from "next/link";
-import { GoArrowRight } from "react-icons/go";
 import { IoIosTimer } from "react-icons/io";
 import { MdOutlineDateRange } from "react-icons/md";
 
@@ -47,9 +46,8 @@ function BlogPage() {
                 <Link
                   href={`/blog/${item.title.toLowerCase().replace(/ /g, "-")}`}
                 >
-                  <button className="hover:text-blue-700 py-1 inline-flex text-lg font-medium items-center gap-x-2 text-blue-800">
+                  <button className="hover:text-blue-700 hover:scale-105 hover:duration-300 py-1 inline-flex text-lg font-medium items-center gap-x-2 border-2 px-2 border-black rounded-xl text-blue-800">
                     Read more
-                    <GoArrowRight />
                   </button>
                 </Link>
               </div>

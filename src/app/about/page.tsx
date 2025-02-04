@@ -3,13 +3,13 @@ import React from "react";
 
 function page() {
   return (
-    <div className="container max-w-3xl mx-auto py-36 px-4">
-      <div className="md:text-4xl text-2xl text-center font-bold py-9">
+    <div className="container max-w-3xl mx-auto py-28">
+      <div className="md:text-4xl text-2xl text-center font-bold py-9 bg-gradient-to-r from-green-300 via-orange-300 to-red-300">
         <h1 className="text-gray-900 py-3 font-bold tracking-wider text-4xl">
           About Us
         </h1>
         <h2 className="text-gray-600 text-4xl font-medium mt-4">
-          Welcome To Abdullah's Blog Website!
+          Welcome To Muhammad Usman's Blog Website!
         </h2>
       </div>
       <div className="text-[16px] sm:text-2xl text-gray-700 md:leading-10 leading-[25px]">
