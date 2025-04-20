@@ -33,11 +33,6 @@ function PostPage({ params }: { params: { slug: string } }) {
         <div className="pt-6 flex flex-wrap items-center gap-x-5 justify-start">
           <div className="flex  gap-x-2 items-center">
             <div className="inline-flex gap-x-2 items-center">
-              <Link
-                target="_blank"
-                href={"https://www.linkedin.com/in/hafiz-abdullah-4239a62a4"}
-
-              >
                 <LuUser
                   size={26}
                   className="bg-gray-700 p-1 text-white rounded-[50%]"
@@ -45,9 +40,7 @@ function PostPage({ params }: { params: { slug: string } }) {
                 />
               </Link>
 
-              <Link href={"https://www.linkedin.com/in/hafiz-abdullah-4239a62a4"} target="_blank">
-
-                <h2 >Abdullah Naeem</h2>
+                <h2>User123</h2>
               </Link>
             </div>
           </div>
