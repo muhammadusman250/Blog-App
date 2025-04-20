@@ -38,10 +38,10 @@ function PostPage({ params }: { params: { slug: string } }) {
                   className="bg-gray-700 p-1 text-white rounded-[50%]"
 
                 />
-              </Link>
+            
 
                 <h2>User123</h2>
-              </Link>
+              
             </div>
           </div>
           <p className="inline-flex gap-x-2 items-center">
